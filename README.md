@@ -58,38 +58,8 @@ Hint 2: Convolutional layers need to be modified such that they do not modify th
 
 ![image](https://github.com/travislatchman/Autoencoders-for-Predictive-Epilepsy-Diagnosis/assets/32372013/43918f0b-8188-46f4-88b3-5946434cea37)
 
-----------------------------------------------------------------
-        Layer (type)               Output Shape         Param #
-================================================================
-            Conv1d-1              [-1, 32, 868]             256
-              ReLU-2              [-1, 32, 868]               0
-         MaxPool1d-3              [-1, 32, 217]               0
-       BatchNorm1d-4              [-1, 32, 217]              64
-           Dropout-5              [-1, 32, 217]               0
-            Conv1d-6              [-1, 32, 217]           7,200
-              ReLU-7              [-1, 32, 217]               0
-         MaxPool1d-8               [-1, 32, 54]               0
-            Conv1d-9               [-1, 32, 54]           7,200
-             ReLU-10               [-1, 32, 54]               0
-         Upsample-11              [-1, 32, 216]               0
-      BatchNorm1d-12              [-1, 32, 216]              64
-           Conv1d-13              [-1, 32, 216]           7,200
-             ReLU-14              [-1, 32, 216]               0
-         Upsample-15              [-1, 32, 864]               0
-      BatchNorm1d-16              [-1, 32, 864]              64
-        ZeroPad2d-17              [-1, 32, 868]               0
-           Conv1d-18               [-1, 1, 868]             225
-             Tanh-19               [-1, 1, 868]               0
-================================================================
-Total params: 22,273
-Trainable params: 22,273
-Non-trainable params: 0
-----------------------------------------------------------------
-Input size (MB): 0.00
-Forward/backward pass size (MB): 1.59
-Params size (MB): 0.08
-Estimated Total Size (MB): 1.67
-----------------------------------------------------------------
+![image](https://github.com/travislatchman/Autoencoders-for-Predictive-Epilepsy-Diagnosis/assets/32372013/60dd0f8b-eecc-45d7-ae36-b7a557f58626)
+
 
 ### **`TASK 3: (Visualization of reconstruction) `** 
 
@@ -114,38 +84,7 @@ Accuracy on test set: 54.37%
 
 Let us treat K (encoded dimension) a as hyper-parameter. Your goal is to ensure K is approximately half of signal length i.e. 868/2 = 434. It is OK if your reduced dimension is in +/-10% range of 434. You will accomplish this by modifying/adding/removing ONLY the following three types of layers: Upsampling, ZeroPadding, and MaxPooling layer. Like previous tasks, first train the autoencoder, then train the subsequent classifier (keeping encoder frozen), and finally report test accuracy. The classifier architecture remains same as before. Also, display a test image and its reconstruction using this auto-encoder. 
 
-----------------------------------------------------------------
-        Layer (type)               Output Shape         Param #
-================================================================
-            Conv1d-1              [-1, 32, 868]             256
-              ReLU-2              [-1, 32, 868]               0
-         MaxPool1d-3              [-1, 32, 434]               0
-       BatchNorm1d-4              [-1, 32, 434]              64
-           Dropout-5              [-1, 32, 434]               0
-            Conv1d-6              [-1, 32, 434]           7,200
-              ReLU-7              [-1, 32, 434]               0
-         MaxPool1d-8              [-1, 32, 432]               0
-            Conv1d-9              [-1, 32, 432]           7,200
-             ReLU-10              [-1, 32, 432]               0
-         Upsample-11              [-1, 32, 864]               0
-      BatchNorm1d-12              [-1, 32, 864]              64
-           Conv1d-13              [-1, 32, 864]           7,200
-             ReLU-14              [-1, 32, 864]               0
-         Upsample-15              [-1, 32, 864]               0
-      BatchNorm1d-16              [-1, 32, 864]              64
-    ConstantPad1d-17              [-1, 32, 868]               0
-           Conv1d-18               [-1, 1, 868]             225
-             Tanh-19               [-1, 1, 868]               0
-================================================================
-Total params: 22,273
-Trainable params: 22,273
-Non-trainable params: 0
-----------------------------------------------------------------
-Input size (MB): 0.00
-Forward/backward pass size (MB): 2.76
-Params size (MB): 0.08
-Estimated Total Size (MB): 2.85
-----------------------------------------------------------------
+![image](https://github.com/travislatchman/Autoencoders-for-Predictive-Epilepsy-Diagnosis/assets/32372013/47559559-b281-485f-846c-03b63bad2a35)
 
 ![image](https://github.com/travislatchman/Autoencoders-for-Predictive-Epilepsy-Diagnosis/assets/32372013/cfe27016-98d3-4659-be42-dcaa310a670a)
 
